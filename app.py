@@ -65,7 +65,7 @@ def get_info(dataset):
     put_per= dataset['% change oi put'].mean()
     new_row={'time':datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p'),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
 #     df = df.append(new_row,ignore_index=True, verify_integrity=False, sort=None)
-    df=pd.DataFrame(new_row,ignore_index=True)
+    df=pd.DataFrame(new_row,index=[0])
     return df  
 
 
