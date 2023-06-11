@@ -78,7 +78,7 @@ def ploting():
         main= get_info(dataset)
         main1=main[['Diffn', 'pcr', 'cal_per','put_per','time']]
 #         final =final.append(main1,ignore_index=True, verify_integrity=False, sort=None)
-        final=pd.concat([final,main1],ignore_index=True)
+        final=pd.concat([final,main1],index=[0])
         
         return dataset,final
 
