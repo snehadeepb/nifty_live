@@ -87,6 +87,7 @@ if __name__=='__main__':
     st.title('WELCOME BULLS CARTEL')
     today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
     st.markdown(f"as at {today_date}")
+    st.markdown('WELCOME TO NIFTY 50')
     option= st.selectbox(
     'How would you like to be contacted?',
     ('5', '10', '15')) 
