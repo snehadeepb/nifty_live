@@ -10,18 +10,17 @@ from pytz import timezone
 
 
 def get_data():
-#     while True:
-#         try:
-#             data=nse_fno("NIFTY")
-#         # data
-#             last_prices=round(nse_quote_ltp("NIFTY"))
-#         # print(last_prices)
-#             break
-#         except:
-#             time.sleep(10)
-    data=nse_fno("NIFTY")
-    last_prices=round(nse_quote_ltp("NIFTY"))
-
+    while True:
+        try:
+            data=nse_fno("NIFTY")
+        # data
+            last_prices=round(nse_quote_ltp("NIFTY"))
+        # print(last_prices)
+            break
+        except:
+            time.sleep(10)
+#     data=nse_fno("NIFTY")
+#     last_prices=round(nse_quote_ltp("NIFTY"))
     data['stocks']
     expiry=list(set(data['expiryDates']))
     expiry.sort(key = lambda date: datetime.strptime(date, '%d-%b-%Y'))
