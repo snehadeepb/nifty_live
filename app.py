@@ -31,13 +31,14 @@ def get_data():
     elif last_prices%100<=50:
         x=(last_prices-last_prices%100)
         strike=[x-150,x-100,x-50,x,x+50,x+100,x+150]
-    d={'call OI':[],
-        'call IV':[],
+    d={'call IV':[],
+        'call OI':[],
         '% change oi':[],
         'strike':[],
+         '% change oi put':[],
         'put OI':[],
         'put IV':[],
-        '% change oi put':[] ,} 
+         } 
     for i in data['stocks']:
         for nifty_strike in strike: 
             if i['metadata']['expiryDate']==expiry[0] and i['metadata']['optionType']=='Call' and i['metadata']['strikePrice']==nifty_strike:
