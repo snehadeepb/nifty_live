@@ -99,7 +99,7 @@ final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time'])
 
 while True:
     dataset,final=ploting()      
-    p1=st.empty()
+    # p1=st.empty()
     p2=st.empty()
     p3=st.empty()
              # % change oi put
@@ -111,6 +111,6 @@ while True:
     fig.autofmt_xdate(rotation=70)
     p3.pyplot(fig)
     time.sleep(5*60) # how to the start again code check upper condition min * sec
-    p1.empty() # then clean all data frame 
+    # p1.empty() # then clean all data frame 
     p2.empty()
     p3.empty()
