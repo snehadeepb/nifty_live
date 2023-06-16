@@ -22,7 +22,7 @@ def get_data():
             time.sleep(10)
 #     data=nse_fno("NIFTY")
 #     last_prices=round(nse_quote_ltp("NIFTY"))
-    data['stocks']
+    # data['stocks']
     expiry=list(set(data['expiryDates']))
     expiry.sort(key = lambda date: datetime.strptime(date, '%d-%b-%Y'))
     if last_prices%100>50:
