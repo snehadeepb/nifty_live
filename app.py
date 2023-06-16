@@ -10,7 +10,8 @@ from pytz import timezone
 
 
 def get_data():
-    while True:
+    data=None
+    while data==None:
         try:
             data=nse_fno("NIFTY")
         # data
