@@ -103,7 +103,7 @@ while True:
     p2=st.empty()
     p3=st.empty()
              # % change oi put
-    p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
+    # p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
     fig, ax = plt.subplots(figsize=(6, 2)) 
     ax.plot(final['time'],final['pcr'])
