@@ -49,7 +49,7 @@ def get_data():
                 d['% change oi put'].append(i['marketDeptOrderBook']['tradeInfo']['pchangeinOpenInterest'])
                 d['put IV'].append(i['marketDeptOrderBook']['otherInfo']['impliedVolatility'])
     out=pd.json_normalize(d)
-    out=out.explode(list(out.columns)).reset_index(drop = True)
+    out=out.explode(list(out.columns)).reset_index()
     out.fillna(0,inplace=True)
     x=out.astype(float).round(2)
     x.sort_values("strike", axis = 0, ascending = True,inplace = True)
@@ -100,11 +100,11 @@ final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time'])
 while True:
     dataset,final=ploting()      
     # p1=st.empty()
-    p2=st.empty()
+    # p2=st.empty()
     p3=st.empty()
              # % change oi put
     # p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
-    p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
+    # p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
     fig, ax = plt.subplots(figsize=(6, 2)) 
     ax.plot(final['time'],final['pcr'])
     ax.axhline(y=0, color='black', linestyle='solid') # 0 line graph
@@ -112,5 +112,5 @@ while True:
     p3.pyplot(fig)
     time.sleep(5*60) # how to the start again code check upper condition min * sec
     # p1.empty() # then clean all data frame 
-    p2.empty()
+    # p2.empty()
     p3.empty()
