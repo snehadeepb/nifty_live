@@ -64,7 +64,8 @@ def get_info(dataset):
     pcr= dataset['put OI'].sum()/dataset['call OI'].sum()
     cal_per= dataset['% change oi'].mean()
     put_per= dataset['% change oi put'].mean()
-    new_row={'time':datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p'),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
+    dirn=dataset['% change oi put']-dataset['% change oi']
+    new_row={'time':datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p'),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2),'dirn':round(dirn,2)}
 #     df = df.append(new_row,ignore_index=True, verify_integrity=False, sort=None)
     df=pd.DataFrame(new_row,index=[0])
     return df  
@@ -77,7 +78,7 @@ def ploting():
              df = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per'])
         dataset= get_data()
         main= get_info(dataset)
-        main1=main[['Diffn', 'pcr', 'cal_per','put_per','time']]
+        main1=main[['Diffn', 'pcr', 'cal_per','put_per','time','dirn']]
 #         final =final.append(main1,ignore_index=True, verify_integrity=False, sort=None)
         final=pd.concat([final,main1],ignore_index=True)
         
@@ -97,7 +98,7 @@ if __name__=='__main__':
     st.markdown(""" CALL % INCREASE MEANS MARKET GOES DOWN  
              PUT % INCREASE MEANS MARKET GOES UP
              """)    
-final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time'])
+final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time','dirn'])
 
 while True:
     dataset,final=ploting()      
