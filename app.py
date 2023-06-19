@@ -69,7 +69,7 @@ def get_info(dataset):
 #     df = df.append(new_row,ignore_index=True, verify_integrity=False, sort=None)
     df=pd.DataFrame(new_row,index=[0])
     putt,calll=abs(df['put_per'].tail(1)),df['put_per'].tail(1)
-    df['Dirn']=putt-calll
+    df['dirn']=putt-calll
     return df  
 
 
