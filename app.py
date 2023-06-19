@@ -4,25 +4,20 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from time import gmtime, strftime
-from IPython.display import clear_output 
+# from IPython.display import clear_output 
 import matplotlib.pyplot as plt
 from pytz import timezone 
 
 
 def get_data():
-    data=None
-    while data==None:
+
+    while True:
         try:
             data=nse_fno("NIFTY")
-        # data
             last_prices=round(nse_quote_ltp("NIFTY"))
-        # print(last_prices)
             break
         except:
             time.sleep(10)
-#     data=nse_fno("NIFTY")
-#     last_prices=round(nse_quote_ltp("NIFTY"))
-    # data['stocks']
     expiry=list(set(data['expiryDates']))
     expiry.sort(key = lambda date: datetime.strptime(date, '%d-%b-%Y'))
     if last_prices%100>50:
