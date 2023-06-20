@@ -46,8 +46,9 @@ def get_data():
                 d['% change oi put'].append(i['marketDeptOrderBook']['tradeInfo']['pchangeinOpenInterest'])
                 d['put IV'].append(i['marketDeptOrderBook']['otherInfo']['impliedVolatility'])
     out=pd.json_normalize(d)
-    out=out.explode(list(out.columns)).reset_index(drop=True)
     out.fillna(0,inplace=True)
+    out=out.explode(list(out.columns)).reset_index(drop=True)
+    
     x=out.astype(float).round(2)
     x.sort_values("strike", axis = 0, ascending = True,inplace = True)
     return x
