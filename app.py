@@ -60,6 +60,8 @@ def get_data():
                     dict_list[lname] += [padel] * (lmax - ll)
             return dict_list
         out = pad_dict_list(d, 0)
+        out=pd.DataFrame(out)
+        out.set_index(list(out.columns)).apply(pd.Series.explode).reset_index()
         # print(d)
     x=out.astype(float).round(2)
     x.sort_values("strike", axis = 0, ascending = True,inplace = True)
