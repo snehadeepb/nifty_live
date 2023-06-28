@@ -17,7 +17,7 @@ def get_data():
             last_prices=round(nse_quote_ltp("NIFTY"))
             break
         except:
-            time.sleep(10)
+            time.sleep(5)
     expiry=list(set(data['expiryDates']))
     expiry.sort(key = lambda date: datetime.strptime(date, '%d-%b-%Y'))
     if last_prices%100>50:
