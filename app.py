@@ -41,7 +41,7 @@ def get_data():
                 d['call OI'].append(i['marketDeptOrderBook']['tradeInfo']['openInterest'])
                 d['% change oi'].append(i['marketDeptOrderBook']['tradeInfo']['pchangeinOpenInterest'])
                 d['call IV'].append(i['marketDeptOrderBook']['otherInfo']['impliedVolatility'])
-            elif i['metadata']['expiryDate']==expiry[0] and i['metadata']['optionType']=='Put' and i['metadata']['strikePrice']==nifty_strike:
+            if i['metadata']['expiryDate']==expiry[0] and i['metadata']['optionType']=='Put' and i['metadata']['strikePrice']==nifty_strike:
                 d['put OI'].append(i['marketDeptOrderBook']['tradeInfo']['openInterest'])
                 d['% change oi put'].append(i['marketDeptOrderBook']['tradeInfo']['pchangeinOpenInterest'])
                 d['put IV'].append(i['marketDeptOrderBook']['otherInfo']['impliedVolatility'])
