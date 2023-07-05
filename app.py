@@ -10,7 +10,6 @@ from pytz import timezone
 
 
 def get_data():
-
     while True:
         try:
             data=nse_fno("NIFTY")
@@ -62,12 +61,10 @@ def get_data():
         out = pad_dict_list(d, 0)
         out=pd.DataFrame(out)
         out.set_index(list(out.columns)).apply(pd.Series.explode).reset_index()
-        # print(d)
+    
     x=out.astype(float).round(2)
     x.sort_values("strike", axis = 0, ascending = True,inplace = True)
     return x
-# print(get_data())
-# dataset=get_data()
 def get_info(dataset):
     df= pd.DataFrame(columns=[ 'pcr', 'cal_per','put_per'])
     value= dataset['put OI'].sum() - dataset['call OI'].sum()
@@ -76,7 +73,6 @@ def get_info(dataset):
     put_per= dataset['% change oi put'].mean()
     # dirn=dataset['% change oi put']-dataset['% change oi']
     new_row={'time':datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p'),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
-#     df = df.append(new_row,ignore_index=True, verify_integrity=False, sort=None)
     df=pd.DataFrame(new_row,index=[0])
     putt,calll=abs(df['put_per'].tail(1).values),abs(df['cal_per'].tail(1).values)
     df['dirn']=putt-calll
@@ -91,7 +87,6 @@ def ploting():
         dataset= get_data()
         main= get_info(dataset)
         main1=main[['Diffn', 'pcr', 'cal_per','put_per','time','dirn']]
-#         final =final.append(main1,ignore_index=True, verify_integrity=False, sort=None)
         final=pd.concat([final,main1],ignore_index=True)
         
         return dataset,final
