@@ -8,7 +8,6 @@ from time import gmtime, strftime
 import matplotlib.pyplot as plt
 from pytz import timezone 
 
-
 def get_data():
     while True:
         try:
