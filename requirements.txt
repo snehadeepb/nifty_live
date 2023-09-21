@@ -9,4 +9,4 @@ yfinance>=0.2.18
 pandas_datareader>=0.10.0
 streamlit>=1.22.0
 plotly>=5.13.1
-deta>=1.1.0  
+deta>=1.1.0
