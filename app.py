@@ -75,7 +75,7 @@ def get_info(dataset):
     cal_per= dataset['% change oi'].mean()
     put_per= dataset['% change oi put'].mean()
     # dirn=dataset['% change oi put']-dataset['% change oi']
-    new_row={'time':datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p'),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
+    new_row={'time':(strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')),'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
     df=pd.DataFrame(new_row,index=[0])
     putt,calll=abs(df['put_per'].tail(1).values),abs(df['cal_per'].tail(1).values)
     df['dirn']=putt-calll
