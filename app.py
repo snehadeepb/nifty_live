@@ -7,6 +7,7 @@ from time import gmtime, strftime
 # from IPython.display import clear_output 
 import matplotlib.pyplot as plt
 from pytz import timezone 
+from deta import Deta
 
 def get_data():
     while True:
@@ -64,7 +65,10 @@ def get_data():
     x=out.astype(float).round(2)
     x.sort_values("strike", axis = 0, ascending = True,inplace = True)
     return x
+
+
 def get_info(dataset):
+    global all_day_data
     df= pd.DataFrame(columns=[ 'pcr', 'cal_per','put_per'])
     value= dataset['put OI'].sum() - dataset['call OI'].sum()
     pcr= dataset['put OI'].sum()/dataset['call OI'].sum()
@@ -75,6 +79,21 @@ def get_info(dataset):
     df=pd.DataFrame(new_row,index=[0])
     putt,calll=abs(df['put_per'].tail(1).values),abs(df['cal_per'].tail(1).values)
     df['dirn']=putt-calll
+    
+    key ="d0svmmrabxg_cS1fKLgcAXt8JXhKM9YDyxeB9JcxnfA5"
+    deta = Deta(key)
+    db = deta.Base("LIVE_NIFTY")
+    def insert_user(o_df):
+        db.put(o_df)
+    insert_user(new_row)
+    key ="d0svmmrabxg_cS1fKLgcAXt8JXhKM9YDyxeB9JcxnfA5"
+    deta = Deta(key)
+    db = deta.Base("LIVE_NIFTY")
+    today_date_fetching=strftime("%d %b %Y", gmtime())
+
+    ml_data = db.fetch({"time?contains": today_date_fetching}) # gt greter then lt less then
+    all_day_data=ml_data.items
+    
     return df  
 
 
@@ -111,6 +130,7 @@ while True:
     p1=st.empty()
     p2=st.empty()
     p3=st.empty()
+    p4=st.empty()
              # % change oi put
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
@@ -119,7 +139,9 @@ while True:
     ax.axhline(y=0, color='black', linestyle='solid') # 0 line graph
     fig.autofmt_xdate(rotation=70)
     p3.pyplot(fig)
+    p4.dataframe(all_day_data)
     time.sleep(5*60) # how to the start again code check upper condition min * sec
     p1.empty() # then clean all data frame 
     p2.empty()
     p3.empty()
+    p4.empty()
