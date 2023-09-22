@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from pytz import timezone 
 from deta import Deta
 
+
 def get_data():
     while True:
         try:
@@ -69,7 +70,6 @@ def get_data():
 
 def get_info(dataset):
     global all_day_data
-    # today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
     df= pd.DataFrame(columns=[ 'pcr', 'cal_per','put_per'])
     value= dataset['put OI'].sum() - dataset['call OI'].sum()
     pcr= dataset['put OI'].sum()/dataset['call OI'].sum()
@@ -77,7 +77,12 @@ def get_info(dataset):
     put_per= dataset['% change oi put'].mean()
     # dirn=dataset['% change oi put']-dataset['% change oi']
     t=strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
-    new_row={'time': t,'Diffn':round(value,2) ,'pcr':round(pcr,2), 'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
+    v=datetime.now(timezone("Asia/Kolkata")).strftime('%d %b %Y %I.%M %p')
+    new_row={'time':v,
+             'Diffn':round(value,2) ,'pcr':round(pcr,2),
+             'cal_per':round(cal_per,2), 'put_per':round(put_per,2)}
+    
+    
     df=pd.DataFrame(new_row,index=[0])
     putt,calll=abs(df['put_per'].tail(1).values),abs(df['cal_per'].tail(1).values)
     df['dirn']=putt-calll
@@ -95,6 +100,7 @@ def get_info(dataset):
 
     ml_data = db.fetch({"time?contains": today_date_fetching}) # gt greter then lt less then
     all_day_data=ml_data.items
+#     print(df)
     
     return df  
 
@@ -116,6 +122,7 @@ if __name__=='__main__':
     st.title('WELCOME BULLS CARTEL')
     st.header('WELCOME TO NIFTY 50')
     today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
+#     today_date =strftime(datetime.now(timezone("Asia/Kolkata")).strftime('%d %b %Y %I.%M %p')
     st.markdown(f"as at {today_date}")
     option= st.selectbox(
     'How would you like to be contacted?',
