@@ -1,4 +1,4 @@
-from nsepython import *
+from nsepythonserver import *
 import seaborn as sns
 import pandas as pd
 import streamlit as st
