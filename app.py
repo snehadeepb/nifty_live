@@ -28,15 +28,15 @@ if __name__=='__main__':
     st.markdown(""" CALL % INCREASE MEANS MARKET GOES DOWN  
              PUT % INCREASE MEANS MARKET GOES UP
              """)  
-    while True:
-       try:
-          data=nse_fno("NIFTY")
-          last_prices=round(nse_quote_ltp("NIFTY"))
-          print(data)
-          st.markdown(data)
-          break
-       except:
-          time.sleep(1)
+    # while True:
+       # try:
+    data=nse_fno("NIFTY")
+    last_prices=round(nse_quote_ltp("NIFTY"))
+    print(data)
+    st.markdown(data)
+    # break
+       # except:
+       #    time.sleep(1)
 
 
 
