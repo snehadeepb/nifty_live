@@ -9,15 +9,7 @@ import matplotlib.pyplot as plt
 from pytz import timezone 
 # from deta import Deta
 
-while True:
-    try:
-        data=nse_fno("NIFTY")
-        last_prices=round(nse_quote_ltp("NIFTY"))
-        print(data)
-        st.markdown(data)
-        break
-    except:
-        time.sleep(1)
+
 
    
 
@@ -35,7 +27,19 @@ if __name__=='__main__':
     st.markdown('Important Information')
     st.markdown(""" CALL % INCREASE MEANS MARKET GOES DOWN  
              PUT % INCREASE MEANS MARKET GOES UP
-             """)    
+             """)  
+    while True:
+    try:
+        data=nse_fno("NIFTY")
+        last_prices=round(nse_quote_ltp("NIFTY"))
+        print(data)
+        st.markdown(data)
+        break
+    except:
+        time.sleep(1)
+
+
+
 # final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time','dirn'])
 
 # while True:
