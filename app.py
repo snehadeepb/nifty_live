@@ -1,4 +1,4 @@
-!pip install nsepythonserver
+
 import nsepythonserver 
 import seaborn as sns
 import pandas as pd
