@@ -33,7 +33,7 @@ if __name__=='__main__':
     data=nse_fno("NIFTY")
     last_prices=round(nse_quote_ltp("NIFTY"))
     print(data)
-    st.markdown(data)
+    st.markdown(last_prices)
     # break
        # except:
        #    time.sleep(1)
