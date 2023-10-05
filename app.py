@@ -15,7 +15,7 @@ import streamlit as st
    
 
 if __name__=='__main__':
-   # print(nse_fno("NIFTY"))
+   print(nse_fno("NIFTY"))
    st.write("HEELO")
 #     st.title('WELCOME BULLS CARTEL')
 #     st.header('WELCOME TO NIFTY 50')
