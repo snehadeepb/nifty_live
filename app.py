@@ -37,6 +37,7 @@ if __name__=='__main__':
     # st.write(last_prices)
            break
        except:
+        st.write("again")
           time.sleep(1)
 
 
