@@ -1,4 +1,4 @@
-
+ 
 from nsepythonserver import *
 # import seaborn as sns
 # import pandas as pd
@@ -16,7 +16,7 @@ import streamlit as st
 
 if __name__=='__main__':
    # print(nse_fno("NIFTY"))
-   st.write("HEELO")
+    st.write("HEELO")
     st.title('WELCOME BULLS CARTEL')
     st.header('WELCOME TO NIFTY 50')
     today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
