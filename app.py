@@ -15,27 +15,27 @@ import streamlit as st
    
 
 if __name__=='__main__':
-   print(nse_fno("NIFTY"))
+   # print(nse_fno("NIFTY"))
    st.write("HEELO")
-#     st.title('WELCOME BULLS CARTEL')
-#     st.header('WELCOME TO NIFTY 50')
-#     today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
-# #     today_date =strftime(datetime.now(timezone("Asia/Kolkata")).strftime('%d %b %Y %I.%M %p')
-#     st.markdown(f"as at {today_date}")
-#     option= st.selectbox(
-#     'How would you like to be contacted?',
-#     ('5', '10', '15')) 
-#     st.write('You selected:', option)
-#     st.markdown('Important Information')
-#     st.markdown(""" CALL % INCREASE MEANS MARKET GOES DOWN  
-#              PUT % INCREASE MEANS MARKET GOES UP
-#              """)  
-#     # while True:
-#        # try:
-#     data=nse_fno("NIFTY")
-#     last_prices=round(nse_quote_ltp("NIFTY"))
-#     print(data)
-#     st.write(last_prices)
+    st.title('WELCOME BULLS CARTEL')
+    st.header('WELCOME TO NIFTY 50')
+    today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
+#     today_date =strftime(datetime.now(timezone("Asia/Kolkata")).strftime('%d %b %Y %I.%M %p')
+    st.markdown(f"as at {today_date}")
+    option= st.selectbox(
+    'How would you like to be contacted?',
+    ('5', '10', '15')) 
+    st.write('You selected:', option)
+    st.markdown('Important Information')
+    st.markdown(""" CALL % INCREASE MEANS MARKET GOES DOWN  
+             PUT % INCREASE MEANS MARKET GOES UP
+             """)  
+    # while True:
+       # try:
+    data=nse_fno("NIFTY")
+    last_prices=round(nse_quote_ltp("NIFTY"))
+    # print(data)
+    # st.write(last_prices)
 #     # break
 #        # except:
 #        #    time.sleep(1)
