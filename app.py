@@ -32,7 +32,7 @@ if __name__=='__main__':
            data=nse_fno("NIFTY")
         
            last_prices=round(nse_quote_ltp("NIFTY"))
-           st.write('You selected:', option)
+           st.write('You selected:', data,last_prices)
     # print(data)
     # st.write(last_prices)
            break
