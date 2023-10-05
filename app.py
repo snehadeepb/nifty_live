@@ -1,13 +1,13 @@
 
 from nsepythonserver import *
-import seaborn as sns
-import pandas as pd
+# import seaborn as sns
+# import pandas as pd
 import streamlit as st
-from datetime import datetime
-from time import gmtime, strftime
-# from IPython.display import clear_output 
-import matplotlib.pyplot as plt
-from pytz import timezone 
+# from datetime import datetime
+# from time import gmtime, strftime
+# # from IPython.display import clear_output 
+# import matplotlib.pyplot as plt
+# from pytz import timezone 
 # from deta import Deta
 
 
