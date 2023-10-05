@@ -4,7 +4,7 @@ import seaborn as sns
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-# from time import gmtime, strftime
+
 # from IPython.display import clear_output 
 import matplotlib.pyplot as plt
 from pytz import timezone 
@@ -19,9 +19,6 @@ if __name__=='__main__':
     st.write("HEELO")
     st.title('WELCOME BULLS CARTEL')
     st.header('WELCOME TO NIFTY 50')
-#     today_date =strftime("%d %b %Y", gmtime()),datetime.now(timezone("Asia/Kolkata")).strftime('%I.%M %p')
-# #     today_date =strftime(datetime.now(timezone("Asia/Kolkata")).strftime('%d %b %Y %I.%M %p')
-#     st.markdown(f"as at {today_date}")
     option= st.selectbox(
     'How would you like to be contacted?',
     ('5', '10', '15')) 
