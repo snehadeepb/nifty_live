@@ -29,7 +29,6 @@ if __name__=='__main__':
              """)  
     while True:
        try:
-           # data=nse_fno("NIFTY")
         
            last_prices=round(nse_quote_ltp("NIFTY"))
            st.write('You selected:', option)
