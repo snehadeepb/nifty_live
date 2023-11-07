@@ -110,6 +110,7 @@ final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time','dirn']
 while True:
     dataset,final=ploting()      
     print(dataset)
+    print("jiii')
     p1=st.empty()
     p2=st.empty()
     p3=st.empty()
