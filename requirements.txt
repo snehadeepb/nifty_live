@@ -1,4 +1,4 @@
-nsepythonserver>=0.1
+nsepythonserver==0.1
 seaborn>=0.11.2
 pandas>=1.5.2
 matplotlib>=3.5.1
