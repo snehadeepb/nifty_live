@@ -128,7 +128,7 @@ while True:
     put=pd.DataFrame(zip(['put']*6,list(result2.values()),list(zip(list(result2.values()),list(result1.keys())))))
     d=pd.concat([call,put])
 
-    fig =px.bar(d,x =0,y=1,text=1,color=2)
+    fig =px.bar(d,x =0,y=1,text=1,color=2, title='Open Interest Chart', barmode='group')
 
     p4.plotly_chart(fig,height=400, key="unique_key")
 
