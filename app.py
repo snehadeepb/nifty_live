@@ -8,6 +8,8 @@ from time import gmtime, strftime
 import matplotlib.pyplot as plt
 from pytz import timezone 
 from deta import Deta
+import plotly.express as px
+
 
 def get_data():
     while True:
@@ -110,11 +112,26 @@ final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time','dirn']
 while True:
     dataset,final=ploting()      
     print(dataset)
-    print('jiii')
     p1=st.empty()
     p2=st.empty()
     p3=st.empty()
+    p4=st.empty()
              # % change oi put
+
+    values,values1, v=dataset['call OI'], dataset['put OI'],dataset['strike']
+    # print(values,values1 , v)
+    
+    
+    result1 = dict(sorted(list(map(lambda x: (v.loc[values.loc[values ==x].index[0]],round((x / sum(values)) * 100)), values)),key=lambda x:x[1],reverse=True))
+    result2 = dict(sorted(list(map(lambda x: (v[values1.loc[values1 ==x].index[0]],round((x / sum(values1)) * 100)), values1)),key=lambda x:x[1],reverse=True))
+    call=pd.DataFrame(zip(['call']*6,list(result1.values()),list(zip(list(result1.values()),list(result1.keys())))))
+    put=pd.DataFrame(zip(['put']*6,list(result2.values()),list(zip(list(result2.values()),list(result1.keys())))))
+    d=pd.concat([call,put])
+
+    fig =px.bar(d,x =0,y=1,text=1,color=2)
+
+    p4.plotly_chart(fig,height=400, key="unique_key")
+
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
     fig, ax = plt.subplots(figsize=(6, 2)) 
@@ -126,3 +143,4 @@ while True:
     p1.empty() # then clean all data frame 
     p2.empty()
     p3.empty()
+    p4.empty()
