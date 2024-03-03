@@ -23,10 +23,10 @@ def get_data():
     expiry.sort(key = lambda date: datetime.strptime(date, '%d-%b-%Y'))
     if last_prices%100>50:
         x=(last_prices-last_prices%100+50)
-        strike=[x-150,x-100,x-50,x,x+50,x+100,x+150]
+        strike=sorted([x-150,x-100,x-50,x,x+50,x+100,x+150])
     elif last_prices%100<=50:
         x=(last_prices-last_prices%100)
-        strike=[x-150,x-100,x-50,x,x+50,x+100,x+150]
+        strike=sorted([x-150,x-100,x-50,x,x+50,x+100,x+150])
     d={'call IV':[],
         'call OI':[],
         '% change oi':[],
@@ -35,8 +35,9 @@ def get_data():
         'put OI':[],
         'put IV':[],
          } 
-    for i in data['stocks']:
-        for nifty_strike in strike: 
+    for nifty_strike in strike: 
+        for i in data['stocks']:
+        
             if i['metadata']['expiryDate']==expiry[0] and i['metadata']['optionType']=='Call' and i['metadata']['strikePrice']==nifty_strike:
                 d['strike'].append(nifty_strike)
                 d['call OI'].append(i['marketDeptOrderBook']['tradeInfo']['openInterest'])
