@@ -127,7 +127,7 @@ while True:
     result2 = dict(sorted(list(map(lambda x: (v[values1.loc[values1 ==x].index[0]],round((x / sum(values1)) * 100)), values1)),key=lambda x:x[1],reverse=True))
     call=pd.DataFrame(zip(['call']*6,list(result1.values()),list(zip(list(result1.values()),list(result1.keys())))))
     put=pd.DataFrame(zip(['put']*6,list(result2.values()),list(zip(list(result2.values()),list(result1.keys())))))
-    d=pd.concat([call,put])
+    d=pd.concat([call,put],ignore_index=True)
 
     fig =px.bar(d,x =0,y=1,text=1,color=2, title='Open Interest Chart', barmode='group')
 
