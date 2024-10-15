@@ -141,7 +141,7 @@ while True:
     ax.axhline(y=0, color='black', linestyle='solid') # 0 line graph
     fig.autofmt_xdate(rotation=70)
     p3.pyplot(fig)
-    time.sleep(1*60) # how to the start again code check upper condition min * sec
+    time.sleep(5*60) # how to the start again code check upper condition min * sec
     p1.empty() # then clean all data frame 
     p2.empty()
     p3.empty()
