@@ -131,7 +131,7 @@ while True:
 
     fig =px.bar(d,x =0,y=1,text=1,color=2, title='Open Interest Chart', barmode='group')
 
-    p4.plotly_chart(fig,height=400, key="1")
+    p4.plotly_chart(fig,height=400)
 
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
