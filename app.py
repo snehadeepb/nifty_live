@@ -109,7 +109,7 @@ if __name__=='__main__':
              PUT % INCREASE MEANS MARKET GOES UP
              """)    
 final = pd.DataFrame(columns=['Diffn', 'pcr', 'cal_per','put_per','time','dirn'])
-
+c = 0
 while True:
     dataset,final=ploting()      
     print(dataset)
@@ -131,7 +131,8 @@ while True:
 
     fig =px.bar(d,x =0,y=1,text=1,color=2, title='Open Interest Chart', barmode='group')
 
-    p4.plotly_chart(fig,height=400 , key ='unique_chart_2')
+    p4.plotly_chart(fig,height=400 , key =c)
+    c+=1
 
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
