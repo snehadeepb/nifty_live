@@ -131,12 +131,12 @@ while True:
     
     # Call OI plot with percentage annotations
     f1 = sns.barplot(x='strike', y='call oi %', data=dataset, ax=axes[0], color="skyblue").set(title="Call OI %")
-    for i, v in enumerate(df['call oi %']):
+    for i, v in enumerate(dataset['call oi %']):
         axes[0].text(i, v + 0.5, f"{v:.2f}%", ha='center')
     
     # Put OI plot with percentage annotations
     f2 = sns.barplot(x='strike', y='put oi %', data=dataset, ax=axes[1], color="salmon").set(title="Put OI %")
-    for i, v in enumerate(df['put oi %']):
+    for i, v in enumerate(dataset['put oi %']):
         axes[1].text(i, v + 0.5, f"{v:.2f}%", ha='center')
     
     plt.tight_layout()
