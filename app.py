@@ -140,7 +140,7 @@ while True:
         axes[1].text(i, v + 0.5, f"{v:.2f}%", ha='center')
     
     plt.tight_layout()
-    p4.show(f1 ,f2 )
+    p4.pyplot(f1 ,f2 )
 
 
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
