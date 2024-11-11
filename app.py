@@ -123,8 +123,8 @@ while True:
 
     values,values1, v=dataset['call OI'], dataset['put OI'],dataset['strike']
     # print(values,values1 , v)
-    dataset['call oi %'] = dataset['call Oi'] / dataset['call Oi'].sum() * 100
-    dataset['put oi %'] = dataset['put Oi'] / dataset['call Oi'].sum() * 100
+    dataset['call oi %'] = dataset['call oi'] / dataset['call oi'].sum() * 100
+    dataset['put oi %'] = dataset['put oi'] / dataset['call oi'].sum() * 100
     
     # Plot side-by-side bar plots
     fig, axes = plt.subplots(1, 2, figsize=(12, 6))
