@@ -117,8 +117,7 @@ while True:
     p2=st.empty()
     p3=st.empty()
     p4=st.empty()
-    p5 = st.empty()
-    p6 = st.empty()
+
     # % change oi put
 
     values,values1, v=dataset['call OI'], dataset['put OI'],dataset['strike']
@@ -155,5 +154,4 @@ while True:
     p2.empty()
     p3.empty()
     p4.empty()
-    p5 = st.empty()
-    p6 = st.empty()
+
