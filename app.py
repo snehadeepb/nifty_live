@@ -117,22 +117,31 @@ while True:
     p2=st.empty()
     p3=st.empty()
     p4=st.empty()
-             # % change oi put
+    p5 = st.empty()
+    p6 = st.empty()
+    # % change oi put
 
     values,values1, v=dataset['call OI'], dataset['put OI'],dataset['strike']
     # print(values,values1 , v)
+    dataset['call oi %'] = dataset['call Oi'] / dataset['call Oi'].sum() * 100
+    dataset['put oi %'] = dataset['put Oi'] / dataset['call Oi'].sum() * 100
     
+    # Plot side-by-side bar plots
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
     
-    result1 = dict(sorted(list(map(lambda x: (v.loc[values.loc[values ==x].index[0]],round((x / sum(values)) * 100)), values)),key=lambda x:x[1],reverse=True))
-    result2 = dict(sorted(list(map(lambda x: (v[values1.loc[values1 ==x].index[0]],round((x / sum(values1)) * 100)), values1)),key=lambda x:x[1],reverse=True))
-    call=pd.DataFrame(zip(['call']*6,list(result1.values()),list(zip(list(result1.values()),list(result1.keys())))))
-    put=pd.DataFrame(zip(['put']*6,list(result2.values()),list(zip(list(result2.values()),list(result1.keys())))))
-    d=pd.concat([call,put],ignore_index=True)
+    # Call OI plot with percentage annotations
+    f1 = sns.barplot(x='strike', y='call oi %', data=dataset, ax=axes[0], color="skyblue").set(title="Call OI %")
+    for i, v in enumerate(df['call oi %']):
+        axes[0].text(i, v + 0.5, f"{v:.2f}%", ha='center')
+    
+    # Put OI plot with percentage annotations
+    f2 = sns.barplot(x='strike', y='put oi %', data=dataset, ax=axes[1], color="salmon").set(title="Put OI %")
+    for i, v in enumerate(df['put oi %']):
+        axes[1].text(i, v + 0.5, f"{v:.2f}%", ha='center')
+    
+    plt.tight_layout()
+    p4.show(f1 ,f2 )
 
-    fig =px.bar(d,x =0,y=1,text=1,color=2, title='Open Interest Chart', barmode='group')
-
-    p4.plotly_chart(fig,height=400 , key =c)
-    c+=1
 
     p1.dataframe(dataset.style.highlight_max(['% change oi put','% change oi'],axis=0)) #Column hightlight 
     p2.dataframe(final.style.highlight_max(['cal_per','put_per'],axis=1)) # row highlight
@@ -146,3 +155,5 @@ while True:
     p2.empty()
     p3.empty()
     p4.empty()
+    p5 = st.empty()
+    p6 = st.empty()
