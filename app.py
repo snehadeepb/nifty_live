@@ -126,17 +126,15 @@ while True:
     dataset['put oi %'] = dataset['put OI'] / dataset['put OI'].sum() * 100
     
     # Plot side-by-side bar plots
-    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(12, 8), dpi = 100)
     
-    # Call OI plot with percentage annotations
-    f1 = sns.barplot(x='strike', y='call oi %', data=dataset, ax=axes[0], color="skyblue").set(title="Call OI %")
-    # for i, v in enumerate(dataset['call oi %']):
-        # axes[0].text(i, v + 0.5, f"{v:.2f}%", ha='center')
-    
-    # Put OI plot with percentage annotations
-    f2 = sns.barplot(x='strike', y='put oi %', data=dataset, ax=axes[1], color="salmon").set(title="Put OI %")
-    # for i, v in enumerate(dataset['put oi %']):
-        # axes[1].text(i, v + 0.5, f"{v:.2f}%", ha='center')
+
+    sns.barplot(x='strike', y='call oi %', data=dataset, ax=axes[0], color="skyblue").set(title="Call OI %")
+    axes[0].bar_label(axes[0].containers[0])
+   
+    sns.barplot(x='strike', y='put oi %', data=dataset, ax=axes[1], color="salmon").set(title="Put OI %")
+    axes[1].bar_label(axes[1].containers[0])
+  
     
     plt.tight_layout()
     p4.pyplot(fig )
